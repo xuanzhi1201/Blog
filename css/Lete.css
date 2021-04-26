@@ -7,11 +7,11 @@
 }
 
 #page-header #site-title {
-    color: skyblue;
+    color: #FF69B4;
 }
 
-#nav a {
-    color: #f9f2f4 !important;
+#nav #site-name {
+    color: #FF69B4 !important;
 }
 
 .footer_custom_text {
@@ -20,4 +20,17 @@
 
 #footer-wrap a {
     color: #00c4b6;
+}
+
+::-webkit-scrollbar {
+    width: 10px;
+    height: 10px;
+}
+
+::-webkit-scrollbar-thumb {
+    border-radius: 2em;
+}
+
+body {
+    cursor: url(/Blog/img/arrow.cur), auto;
 }
