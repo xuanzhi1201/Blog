@@ -1,0 +1,23 @@
+.author-info__name {
+    color: #ff7242;
+}
+
+#footer {
+    background: transparent !important;
+}
+
+#page-header #site-title {
+    color: skyblue;
+}
+
+#nav a {
+    color: #f9f2f4 !important;
+}
+
+.footer_custom_text {
+    color: #00c4b6;
+}
+
+#footer-wrap a {
+    color: #00c4b6;
+}
