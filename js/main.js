@@ -37,14 +37,14 @@ document.addEventListener('DOMContentLoaded', function () {
     const $menuMask = document.getElementById('menu-mask')
     const $body = document.body
 
-    function openMobileSidebar () {
+    function openMobileSidebar() {
       btf.sidebarPaddingR()
       $body.style.overflow = 'hidden'
       btf.fadeIn($menuMask, 0.5)
       $mobileSidebarMenus.classList.add('open')
     }
 
-    function closeMobileSidebar () {
+    function closeMobileSidebar() {
       $body.style.overflow = ''
       $body.style.paddingRight = ''
       btf.fadeOut($menuMask, 0.5)
@@ -67,8 +67,8 @@ document.addEventListener('DOMContentLoaded', function () {
   }
 
   /**
- * 首頁top_img底下的箭頭
- */
+   * 首頁top_img底下的箭頭
+   */
   const scrollDownInIndex = () => {
     const $scrollDownEle = document.getElementById('scroll-down')
     $scrollDownEle && $scrollDownEle.addEventListener('click', function () {
@@ -77,9 +77,9 @@ document.addEventListener('DOMContentLoaded', function () {
   }
 
   /**
- * 代碼
- * 只適用於Hexo默認的代碼渲染
- */
+   * 代碼
+   * 只適用於Hexo默認的代碼渲染
+   */
   const addHighlightTool = function () {
     const highLight = GLOBAL_CONFIG.highlight
     if (!highLight) return
@@ -116,7 +116,9 @@ document.addEventListener('DOMContentLoaded', function () {
           const prevEle = ctx.previousElementSibling
           prevEle.innerText = GLOBAL_CONFIG.copy.success
           prevEle.style.opacity = 1
-          setTimeout(() => { prevEle.style.opacity = 0 }, 700)
+          setTimeout(() => {
+            prevEle.style.opacity = 0
+          }, 700)
         }
       } else {
         if (GLOBAL_CONFIG.Snackbar !== undefined) {
@@ -147,9 +149,13 @@ document.addEventListener('DOMContentLoaded', function () {
       const $nextEle = [...ele.parentNode.children].slice(1)
       ele.firstChild.classList.toggle('closed')
       if (btf.isHidden($nextEle[$nextEle.length - 1])) {
-        $nextEle.forEach(e => { e.style.display = 'block' })
+        $nextEle.forEach(e => {
+          e.style.display = 'block'
+        })
       } else {
-        $nextEle.forEach(e => { e.style.display = 'none' })
+        $nextEle.forEach(e => {
+          e.style.display = 'none'
+        })
       }
     }
 
@@ -163,7 +169,7 @@ document.addEventListener('DOMContentLoaded', function () {
       this.classList.toggle('expand-done')
     }
 
-    function createEle (lang, item, service) {
+    function createEle(lang, item, service) {
       const fragment = document.createDocumentFragment()
 
       if (isShowTool) {
@@ -220,9 +226,9 @@ document.addEventListener('DOMContentLoaded', function () {
   }
 
   /**
- * PhotoFigcaption
- */
-  function addPhotoFigcaption () {
+   * PhotoFigcaption
+   */
+  function addPhotoFigcaption() {
     document.querySelectorAll('#article-container img').forEach(function (item) {
       const parentEle = item.parentNode
       if (!parentEle.parentNode.classList.contains('justified-gallery')) {
@@ -235,9 +241,9 @@ document.addEventListener('DOMContentLoaded', function () {
   }
 
   /**
- * justified-gallery 圖庫排版
- * 需要 jQuery
- */
+   * justified-gallery 圖庫排版
+   * 需要 jQuery
+   */
 
   let detectJgJsLoad = false
   const runJustifiedGallery = function (ele) {
@@ -262,8 +268,8 @@ document.addEventListener('DOMContentLoaded', function () {
   }
 
   /**
- * fancybox和 mediumZoom
- */
+   * fancybox和 mediumZoom
+   */
   const addFancybox = function (ele) {
     const runFancybox = (ele) => {
       ele.each(function (i, o) {
@@ -304,9 +310,8 @@ document.addEventListener('DOMContentLoaded', function () {
   }
 
   const jqLoadAndRun = () => {
-    const $fancyboxEle = GLOBAL_CONFIG.lightbox === 'fancybox'
-      ? document.querySelectorAll('#article-container :not(a):not(.gallery-group) > img, #article-container > img')
-      : []
+    const $fancyboxEle = GLOBAL_CONFIG.lightbox === 'fancybox' ?
+      document.querySelectorAll('#article-container :not(a):not(.gallery-group) > img, #article-container > img') : []
     const fbLengthNoZero = $fancyboxEle.length > 0
     const $jgEle = document.querySelectorAll('#article-container .justified-gallery')
     const jgLengthNoZero = $jgEle.length > 0
@@ -320,8 +325,8 @@ document.addEventListener('DOMContentLoaded', function () {
   }
 
   /**
- * 滾動處理
- */
+   * 滾動處理
+   */
   const scrollFn = function () {
     const $rightside = document.getElementById('rightside')
     const innerHeight = window.innerHeight + 56
@@ -371,7 +376,7 @@ document.addEventListener('DOMContentLoaded', function () {
     }, 200))
 
     // find the scroll direction
-    function scrollDirection (currentTop) {
+    function scrollDirection(currentTop) {
       const result = currentTop > initTop // true is down & false is up
       initTop = currentTop
       return result
@@ -379,8 +384,8 @@ document.addEventListener('DOMContentLoaded', function () {
   }
 
   /**
- *  toc
- */
+   *  toc
+   */
   const tocFn = function () {
     const $cardTocLayout = document.getElementById('card-toc')
     const $cardToc = $cardTocLayout.getElementsByClassName('toc-content')[0]
@@ -438,9 +443,9 @@ document.addEventListener('DOMContentLoaded', function () {
     // toc元素點擊
     $cardToc.addEventListener('click', (e) => {
       e.preventDefault()
-      const $target = e.target.classList.contains('toc-link')
-        ? e.target
-        : e.target.parentElement
+      const $target = e.target.classList.contains('toc-link') ?
+        e.target :
+        e.target.parentElement
       btf.scrollToDest(btf.getEleTop(document.getElementById(decodeURI($target.getAttribute('href')).replace('#', ''))), 300)
       if (window.innerWidth < 900) {
         mobileToc.close()
@@ -481,14 +486,18 @@ document.addEventListener('DOMContentLoaded', function () {
       if (isAnchor) updateAnchor(currentId)
 
       if (currentId === '') {
-        $cardToc.querySelectorAll('.active').forEach(i => { i.classList.remove('active') })
+        $cardToc.querySelectorAll('.active').forEach(i => {
+          i.classList.remove('active')
+        })
         detectItem = currentIndex
         return
       }
 
       detectItem = currentIndex
 
-      $cardToc.querySelectorAll('.active').forEach(item => { item.classList.remove('active') })
+      $cardToc.querySelectorAll('.active').forEach(item => {
+        item.classList.remove('active')
+      })
       const currentActive = $tocLink[currentIndex]
       currentActive.classList.add('active')
 
@@ -505,8 +514,8 @@ document.addEventListener('DOMContentLoaded', function () {
   }
 
   /**
- * Rightside
- */
+   * Rightside
+   */
   const rightSideFn = {
     switchReadMode: () => { // read-mode
       const $body = document.body
@@ -516,7 +525,7 @@ document.addEventListener('DOMContentLoaded', function () {
       newEle.className = 'fas fa-sign-out-alt exit-readmode'
       $body.appendChild(newEle)
 
-      function clickFn () {
+      function clickFn() {
         $body.classList.remove('read-mode')
         newEle.remove()
         newEle.removeEventListener('click', clickFn)
@@ -548,9 +557,9 @@ document.addEventListener('DOMContentLoaded', function () {
     },
     hideAsideBtn: () => { // Hide aside
       const $htmlDom = document.documentElement.classList
-      $htmlDom.contains('hide-aside')
-        ? saveToLocal.set('aside-status', 'show', 2)
-        : saveToLocal.set('aside-status', 'hide', 2)
+      $htmlDom.contains('hide-aside') ?
+        saveToLocal.set('aside-status', 'show', 2) :
+        saveToLocal.set('aside-status', 'hide', 2)
       $htmlDom.toggle('hide-aside')
     },
 
@@ -560,7 +569,7 @@ document.addEventListener('DOMContentLoaded', function () {
       if (plus) {
         if (fontSizeVal >= 20) return
         newValue = fontSizeVal + 1
-        document.documentElement.style.setProperty('--global-font-size', newValue + 'px')
+        document.documentElement.style.setProperty('--global-font-size', newValue + 'px');
         !document.getElementById('nav').classList.contains('hide-menu') && adjustMenu(true)
       } else {
         if (fontSizeVal <= 10) return
@@ -604,10 +613,10 @@ document.addEventListener('DOMContentLoaded', function () {
   })
 
   /**
- * menu
- * 側邊欄sub-menu 展開/收縮
- * 解決menus在觸摸屏下，滑動屏幕menus_item_child不消失的問題（手機hover的bug)
- */
+   * menu
+   * 側邊欄sub-menu 展開/收縮
+   * 解決menus在觸摸屏下，滑動屏幕menus_item_child不消失的問題（手機hover的bug)
+   */
   const clickFnOfSubMenu = function () {
     document.querySelectorAll('#sidebar-menus .expand').forEach(function (e) {
       e.addEventListener('click', function () {
@@ -630,19 +639,20 @@ document.addEventListener('DOMContentLoaded', function () {
   }
 
   /**
- * 複製時加上版權信息
- */
+   * 複製時加上版權信息
+   */
   const addCopyright = () => {
     const copyright = GLOBAL_CONFIG.copyright
     document.body.oncopy = (e) => {
       e.preventDefault()
-      let textFont; const copyFont = window.getSelection(0).toString()
+      let textFont;
+      const copyFont = window.getSelection(0).toString()
       if (copyFont.length > copyright.limitCount) {
         textFont = copyFont + '\n' + '\n' + '\n' +
-        copyright.languages.author + '\n' +
-        copyright.languages.link + window.location.href + '\n' +
-        copyright.languages.source + '\n' +
-        copyright.languages.info
+          copyright.languages.author + '\n' +
+          copyright.languages.link + window.location.href + '\n' +
+          copyright.languages.source + '\n' +
+          copyright.languages.info
       } else {
         textFont = copyFont
       }
@@ -655,8 +665,8 @@ document.addEventListener('DOMContentLoaded', function () {
   }
 
   /**
- * 網頁運行時間
- */
+   * 網頁運行時間
+   */
   const addRuntime = () => {
     const $runtimeCount = document.getElementById('runtimeshow')
     if ($runtimeCount) {
@@ -666,8 +676,8 @@ document.addEventListener('DOMContentLoaded', function () {
   }
 
   /**
- * 最後一次更新時間
- */
+   * 最後一次更新時間
+   */
   const addLastPushDate = () => {
     const $lastPushDateItem = document.getElementById('last-push-date')
     if ($lastPushDateItem) {
@@ -677,8 +687,8 @@ document.addEventListener('DOMContentLoaded', function () {
   }
 
   /**
- * table overflow
- */
+   * table overflow
+   */
   const addTableWrap = function () {
     const $table = document.querySelectorAll('#article-container :not(.highlight) > table, #article-container > table')
     if ($table.length) {
@@ -689,8 +699,8 @@ document.addEventListener('DOMContentLoaded', function () {
   }
 
   /**
- * tag-hide
- */
+   * tag-hide
+   */
   const clickFnOfTagHide = function () {
     const $hideInline = document.querySelectorAll('#article-container .hide-button')
     if ($hideInline.length) {
@@ -818,7 +828,9 @@ document.addEventListener('DOMContentLoaded', function () {
 
   const unRefreshFn = function () {
     window.addEventListener('resize', adjustMenu)
-    window.addEventListener('orientationchange', () => { setTimeout(adjustMenu(true), 100) })
+    window.addEventListener('orientationchange', () => {
+      setTimeout(adjustMenu(true), 100)
+    })
 
     clickFnOfSubMenu()
     GLOBAL_CONFIG.islazyload && lazyloadImg()
