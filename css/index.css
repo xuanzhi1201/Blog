@@ -4740,7 +4740,7 @@ _:future,
   z-index: 22;
 }
 #vcomment textarea {
-  background: url("/img/404bg.png") 100% 100% no-repeat;
+  background: url("./img/comment.png") 100% 100% no-repeat;
 }
 #vcomment textarea:focus {
   background-image: none;
