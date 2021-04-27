@@ -47,6 +47,8 @@ a:hover {
 }
 
 /*按钮*/
+#vcomment .vbtn:hover,
+#waline .vbtn:hover,
 button:hover {
     cursor: url(/Blog/img/link.cur), auto;
 }
